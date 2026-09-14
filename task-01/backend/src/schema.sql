@@ -50,10 +50,4 @@ CREATE TABLE IF NOT EXISTS payments (
 -- Reserved  -> Cancelled (user cancels before paying)
 -- Paid      -> Cancelled (user cancels after paying -> refund simulated)
 -- All other transitions are rejected by the API.
-
-INSERT INTO products (name, price, stock) VALUES
-  ('Wireless Mouse', 9.99, 25),
-  ('Mechanical Keyboard', 49.99, 10),
-  ('USB-C Hub', 19.99, 15),
-  ('Limited Edition Sticker Pack', 4.99, 3)
-ON DUPLICATE KEY UPDATE name = name;
+-- Seed data is inserted by migrate.js only when the products table is empty.
