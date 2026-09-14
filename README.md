@@ -1,10 +1,12 @@
 # Techloom.ai Software Engineer Intern — Practical Assessment
 
-**Repository:** `<add your GitHub repo URL here>`
+**Repository:** <https://github.com/Pirashaliny/techloom-assessment>
 
 **Live Deployments:**
-- Task 01 (POS Order & Inventory) — API: `<add Railway/Render URL>` · Frontend: `<add Vercel/Netlify URL>`
-- Task 02 (E-Commerce Checkout & Payment) — API: `<add Railway/Render URL>` · Frontend: `<add Vercel/Netlify URL>`
+Task 01 Backend: https://techloom-assessment-production-fb70.up.railway.app
+Task 01 Frontend: https://sweet-transformation-production-6f1e.up.railway.app
+Task 02 Backend: https://secure-rebirth-production-21dc.up.railway.app
+Task 02 Frontend: https://marvelous-solace-production-e216.up.railway.app
 
 **Demo walkthrough:** `<optional screen-recording link>`
 
