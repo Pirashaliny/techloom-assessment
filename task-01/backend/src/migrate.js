@@ -1,9 +1,14 @@
 // Runs schema.sql against the configured MySQL database.
+<<<<<<< HEAD
 // Usage: npm run migrate   (also runs automatically on server start)
+=======
+// Usage: npm run migrate
+>>>>>>> c8e52bbd3c97e09a7f2cfafcb9e9f9787748df3b
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2/promise');
+<<<<<<< HEAD
 const { getDbConfig, DEFAULT_DATABASE } = require('./config');
 
 const SEED_SQL = `
@@ -58,20 +63,39 @@ async function runMigrate() {
     }
     await connection.query(`USE \`${dbName}\``);
   }
+=======
+
+async function migrate() {
+  const connection = await mysql.createConnection({
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || 3306,
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    multipleStatements: true
+  });
+
+  const dbName = process.env.DB_NAME || 'techloom_pos';
+  await connection.query(`CREATE DATABASE IF NOT EXISTS \`${dbName}\``);
+  await connection.query(`USE \`${dbName}\``);
+>>>>>>> c8e52bbd3c97e09a7f2cfafcb9e9f9787748df3b
 
   const sql = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
   await connection.query(sql);
 
+<<<<<<< HEAD
   const [rows] = await connection.query('SELECT COUNT(*) AS c FROM products');
   if (Number(rows[0].c) === 0) {
     await connection.query(SEED_SQL);
     console.log('Seeded products');
   }
 
+=======
+>>>>>>> c8e52bbd3c97e09a7f2cfafcb9e9f9787748df3b
   console.log(`Migration complete. Database "${dbName}" is ready.`);
   await connection.end();
 }
 
+<<<<<<< HEAD
 if (require.main === module) {
   runMigrate().catch((err) => {
     console.error('Migration failed:', err);
@@ -80,3 +104,9 @@ if (require.main === module) {
 }
 
 module.exports = { runMigrate };
+=======
+migrate().catch((err) => {
+  console.error('Migration failed:', err);
+  process.exit(1);
+});
+>>>>>>> c8e52bbd3c97e09a7f2cfafcb9e9f9787748df3b

@@ -60,4 +60,15 @@ CREATE TABLE IF NOT EXISTS refunds (
 -- Reserved -> Expired   (5 min timeout / payment timeout, stock released)
 -- Reserved -> Cancelled (user cancels before paying, stock released)
 -- Paid     -> Refunded  (user cancels after paying, refund simulated, stock restored)
+<<<<<<< HEAD
 -- Seed data is inserted by migrate.js only when the products table is empty.
+=======
+
+INSERT INTO products (name, description, category, price, stock) VALUES
+  ('Cotton T-Shirt', 'Soft everyday cotton t-shirt', 'apparel', 12.99, 40),
+  ('Running Shoes', 'Lightweight breathable running shoes', 'footwear', 59.99, 20),
+  ('Bluetooth Speaker', 'Portable speaker with 12h battery', 'electronics', 29.99, 15),
+  ('Ceramic Mug', 'Hand-glazed 350ml mug', 'home', 8.5, 30),
+  ('Limited Drop Sneakers', 'Numbered limited edition release', 'footwear', 129.99, 3)
+ON DUPLICATE KEY UPDATE name = name;
+>>>>>>> c8e52bbd3c97e09a7f2cfafcb9e9f9787748df3b

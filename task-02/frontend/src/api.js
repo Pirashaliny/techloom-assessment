@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 const BASE_URL =
   import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:4002' : '');
+=======
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4002';
+>>>>>>> c8e52bbd3c97e09a7f2cfafcb9e9f9787748df3b
 
 async function request(path, options = {}) {
   const res = await fetch(`${BASE_URL}${path}`, {

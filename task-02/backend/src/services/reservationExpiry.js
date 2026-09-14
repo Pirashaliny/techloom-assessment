@@ -9,9 +9,14 @@ const pool = require('../db');
  */
 function startReservationExpiryJob() {
   cron.schedule('*/30 * * * * *', async () => {
+<<<<<<< HEAD
     let conn;
     try {
       conn = await pool.getConnection();
+=======
+    const conn = await pool.getConnection();
+    try {
+>>>>>>> c8e52bbd3c97e09a7f2cfafcb9e9f9787748df3b
       await conn.beginTransaction();
       const [expired] = await conn.query(
         `SELECT id FROM orders WHERE status = 'Reserved' AND expires_at < NOW() FOR UPDATE`
@@ -33,6 +38,7 @@ function startReservationExpiryJob() {
         console.log(`[reservation-expiry] expired ${expired.length} order(s)`);
       }
     } catch (err) {
+<<<<<<< HEAD
       if (conn) {
         try {
           await conn.rollback();
@@ -43,6 +49,12 @@ function startReservationExpiryJob() {
       console.error('[reservation-expiry] job failed:', err.message);
     } finally {
       if (conn) conn.release();
+=======
+      await conn.rollback();
+      console.error('[reservation-expiry] job failed:', err.message);
+    } finally {
+      conn.release();
+>>>>>>> c8e52bbd3c97e09a7f2cfafcb9e9f9787748df3b
     }
   });
 }
